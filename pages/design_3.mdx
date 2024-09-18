@@ -1,0 +1,104 @@
+---
+title: "Preparing for 3D Printing"
+description: "Learn how to use Bambu Studio to prepare your 3D model for printing"
+---
+
+import { Callout } from 'nextra/components'
+import { Steps } from 'nextra/components'
+
+# Preparing for 3D Printing
+
+Now that you have your 3D model ready, it's time to prepare it for printing. We'll be using Bambu Studio, a powerful slicing software that will convert your 3D model into instructions that your 3D printer can understand.
+
+## 3.1 Introduction to Bambu Studio
+
+Bambu Studio is a user-friendly slicing software designed specifically for Bambu Lab printers. It allows you to configure various print settings and preview your print before sending it to the printer.
+
+### Installing Bambu Studio
+
+<Steps>
+1. Go to the [Bambu Lab Software Downloads page](https://bambulab.com/en/download/studio)
+2. Select the appropriate version for your operating system (Windows, macOS, or Linux)
+3. Download the installer and run it
+4. Follow the on-screen instructions to complete the installation
+</Steps>
+
+### Importing your STL file
+
+<Steps>
+1. Open Bambu Studio
+2. Click on the "Import Model" button or drag and drop your STL file into the program
+3. Your model should now appear on the virtual print bed
+</Steps>
+
+<Callout type="tip">
+  You can use the mouse to rotate, zoom, and pan around your model to inspect it from all angles.
+</Callout>
+
+## 3.2 Configuring Print Settings
+
+Bambu Studio offers a wide range of settings to customize your print. Here are some key settings to consider:
+
+### Setting layer height
+
+1. Find the "Layer height" setting in the print settings panel
+2. For a keychain, a layer height between 0.1mm and 0.2mm usually works well
+   - Lower values (e.g., 0.1mm) give smoother surfaces but take longer to print
+   - Higher values (e.g., 0.2mm) print faster but may show more visible layer lines
+
+### Adjusting seam settings
+
+1. Look for "Seam position" in the print settings
+2. For a keychain, "Rear" or "Aligned" often works well to hide the seam
+
+### Choosing infill pattern and density
+
+1. Find the "Infill" section in the settings
+2. For a small, solid object like a keychain, set infill density to 100%
+3. Choose an infill pattern like "Grid" or "Gyroid" for strength
+
+### Configuring support options
+
+1. If your model has overhangs, you may need to enable supports
+2. Look for the "Support" section in the settings
+3. Enable "Generate support" if needed
+4. Adjust the overhang threshold angle (usually 45-60 degrees works well)
+
+### Other important settings
+
+- **Wall thickness**: Set to at least 0.8mm for strength
+- **Top/Bottom layers**: Use at least 3 layers for a smooth surface
+- **Print speed**: Start with the default settings, adjust if needed
+- **Temperature**: Use the recommended temperature for your filament
+
+<Callout type="warning">
+  These are general guidelines. You may need to adjust settings based on your specific model and desired outcome.
+</Callout>
+
+## 3.3 Slicing the Model
+
+Once you've configured your settings, it's time to slice the model.
+
+### Running the slicer
+
+1. Click on the "Slice" button in Bambu Studio
+2. Wait for the slicing process to complete
+
+### Reviewing the sliced model
+
+1. Use the layer slider to preview each layer of your print
+2. Check for any potential issues, such as gaps or unsupported areas
+3. If you notice any problems, adjust your settings and slice again
+
+### Exporting the prepared file
+
+1. Once you're satisfied with the preview, click on "Export"
+2. Choose where to save your file
+3. Select the appropriate file format (usually .3mf for Bambu printers)
+4. Click "Save" to export your prepared file
+
+<Callout type="info">
+  The exported file contains all the instructions your printer needs to create your keychain. In the next section, we'll learn how to send this file to the printer and start the printing process.
+</Callout>
+
+Congratulations! You've now prepared your 3D model for printing. In the next section, we'll cover how to use the Bambu P1P printer to bring your design to life.

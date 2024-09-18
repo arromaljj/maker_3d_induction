@@ -1,0 +1,102 @@
+---
+title: "Designing Your Keychain"
+description: "Learn how to create an SVG design and transform it into a 3D model for your personalized keychain"
+---
+
+import { Callout } from 'nextra/components'
+import { Steps } from 'nextra/components'
+
+# Designing Your Keychain
+
+In this section, we'll walk through the process of designing your personalized keychain. We'll start by creating a 2D design using Google Drawings and then transform it into a 3D model using TinkerCAD.
+
+## 2.1 Creating an SVG Design
+
+### Introduction to Google Drawings
+
+Google Drawings is a free, web-based tool that allows you to create and edit simple vector graphics. It's perfect for our needs as it can export designs in SVG format, which we'll use later in TinkerCAD.
+
+<Callout type="info">
+  If you haven't already, make sure you're signed in to your Google account before proceeding.
+</Callout>
+
+### Creating your name or design in Google Drawings
+
+<Steps>
+
+### Open Google Drawings
+
+1. Go to [Google Drawings](https://docs.google.com/drawings)
+2. Click on "Blank drawing" to start a new project
+
+### Set up your canvas
+
+1. Click on File > Page setup
+2. Set the size to a square shape (e.g., 6 inches x 6 inches)
+
+### Create your design
+
+1. Use the Text tool to type your name or chosen text
+2. Experiment with different fonts, sizes, and colors
+3. Alternatively, use the shape tools to create a custom design
+
+### Align and arrange
+
+1. Use the alignment tools to center your design on the canvas
+2. If using multiple elements, group them together (Ctrl+G or Cmd+G)
+
+</Steps>
+
+<Callout type="warning">
+  Keep your design relatively simple. Intricate details might not print well on a small keychain.
+</Callout>
+
+### Exporting as SVG
+
+Once you're happy with your design:
+
+1. Click on File > Download > Scalable Vector Graphics (.svg)
+2. Save the file to your computer with a memorable name
+
+## 2.2 3D Modeling with TinkerCAD
+
+### Setting up a TinkerCAD account
+
+1. Go to [TinkerCAD](https://www.tinkercad.com/)
+2. Click on "Join Now" and follow the prompts to create an account
+3. Once logged in, click on "Create new design"
+
+### Importing your SVG into TinkerCAD
+
+<Steps>
+
+### Import SVG
+
+1. In your TinkerCAD design space, click on "Import" in the top right corner
+2. Select "Choose File" and navigate to your saved SVG file
+3. Click "Import" to bring your design into TinkerCAD
+
+### Adjust size and position
+
+1. Use the resize handles to adjust the size of your imported design
+2. Position it in the center of the workplane
+
+</Steps>
+
+### Extruding the SVG to create a 3D model
+
+1. With your SVG selected, look for the height parameter in the shape menu
+2. Increase the height to your desired thickness (around 5-10mm works well for keychains)
+3. If needed, use the "Hole" feature to create a loop for the keyring
+
+<Callout type="tip">
+  Experiment with different heights and shapes. You might want to add a base layer for more stability.
+</Callout>
+
+### Exporting the model as an STL file
+
+1. Once you're satisfied with your 3D model, click on "Export" in the top right corner
+2. Choose ".STL" as the file format
+3. Click "Export" and save the file to your computer
+
+Congratulations! You've now designed your personalized keychain and prepared it for 3D printing. In the next section, we'll learn how to prepare this STL file for printing using Bambu Studio.
