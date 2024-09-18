@@ -3,12 +3,17 @@ import { DocsThemeConfig } from "nextra-theme-docs";
 import Image from "next/image";
 
 const config: DocsThemeConfig = {
-  logo: <><Image src="/media/logo.png" alt="Maker logo" width="35" height="35" /> <p style={{ marginLeft: "10px", fontWeight: "bold" }}>Maker Society</p></>,
+  logo: (
+    <>
+      <Image src="/media/logo.png" alt="Maker logo" width="35" height="35" />{" "}
+      <p style={{ marginLeft: "10px", fontWeight: "bold" }}>Maker Society</p>
+    </>
+  ),
   // project: {
   //   link: "https://github.com/shuding/nextra-docs-template",
   // },
   chat: {
-    link: "https://discord.com",
+    link: "https://discord.com/invite/MhYrmsqUTb",
   },
 
   // docsRepositoryBase: "https://github.com/shuding/nextra-docs-template",
