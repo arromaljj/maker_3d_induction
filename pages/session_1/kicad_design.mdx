@@ -1,5 +1,5 @@
 ---
-title: 'PCB Layout in KiCad'
+title: 'Designing the Circuit in KiCad'
 date: '2024-09-25'
 ---
 
@@ -7,158 +7,153 @@ import { Callout } from 'nextra/components'
 import { Steps } from 'nextra/components'
 import Image from 'next/image'
 
-# PCB Layout in KiCad
+# Designing the Circuit in KiCad
 
-Now that we have our schematic complete, it's time to turn it into a physical board design. We'll use KiCad's PCB Editor (Pcbnew) to create the layout for our Tiny Arcade Game PCB.
+Now that we're familiar with KiCad and our circuit theory, let's dive into designing our Tiny Arcade Game circuit. We'll use KiCad's Schematic Editor (Eeschema) to create a schematic based on the circuit theory we've discussed.
 
-## Setting Up the PCB Layout
+## Setting Up the Project
 
 <Steps>
-### Open PCB Editor
-1. In the KiCad project manager, click on "PCB Editor" or double-click on "TinyArcadeGame.kicad_pcb"
-2. If prompted to create a new PCB file, click "Yes"
+### Open KiCad
+Launch KiCad from your applications menu or desktop shortcut.
 
-### Import Netlist
-1. Go to "Tools" > "Update PCB from Schematic"
-2. In the dialog that appears, click "Update PCB"
-3. You should now see all your components on the PCB, ready to be arranged
+### Create a New Project
+1. Click on "File" > "New" > "Project"
+2. Choose a location for your project and name it "TinyArcadeGame"
+3. Click "Create"
+
+### Open Schematic Editor
+In the KiCad project manager, double-click on "TinyArcadeGame.kicad_sch" to open the Schematic Editor.
 </Steps>
 
-## Configuring Board Setup
+## Adding Custom Symbols and Footprints
 
-Before we start placing components, let's configure our board settings:
+Before we start adding components, we need to import some custom symbols and footprints for our specialized components.
 
 <Steps>
-### Set Board Size
-1. Go to "File" > "Board Setup"
-2. In the "Board Editor Options" tab, set the board size to 60mm x 40mm (or your preferred size)
+### Import Custom Symbols
+1. Go to "Preferences" > "Manage Symbol Libraries"
+2. Click "Add existing library"
+3. Browse for your custom .lib files (e.g., TP4056, ZX62-B-5PA_33 USB connector)
+4. Select the file and click "Open"
+5. Give the library a nickname (e.g., "TinyArcadeCustom")
+6. Click "OK" to close the dialog
 
-### Set Design Rules
-1. In the "Board Setup" window, go to the "Design Rules" tab
-2. Set the following:
-   - Clearance: 0.2mm
-   - Track Width: 0.25mm (min), 0.5mm (power)
-   - Via Size: 0.8mm
-   - Via Drill: 0.4mm
-3. Click "OK" to apply the settings
+### Import Custom Footprints
+1. Go to "Preferences" > "Manage Footprint Libraries"
+2. Click "Add existing library"
+3. Browse for your custom .pretty folder or individual .kicad_mod files
+4. Select the folder or files and click "Open"
+5. Give the library a nickname (e.g., "TinyArcadeCustomFootprints")
+6. Click "OK" to close the dialog
 </Steps>
 
 <Callout type="info">
-  These settings are suitable for many PCB manufacturers. Always check your manufacturer's capabilities and adjust if necessary.
+  Ensure you have the necessary custom symbol and footprint files for components like the TP4056 and USB connector before starting your design.
 </Callout>
 
-## Placing Components
+## Adding Components
 
-Now let's arrange our components on the board:
+Now, let's add the components we need for our circuit.
 
 <Steps>
-### Place Power Management Components
-1. Position the USB connector at the edge of the board
-2. Place the TP4056 charging IC near the USB connector
-3. Position the battery connector on the opposite side of the board from the USB connector
+### Add ATtiny85
+1. Press 'A' to open the "Add Symbol" menu
+2. Search for "ATtiny85" and select it
+3. Place the component on your schematic
 
-### Arrange Major Components
-1. Place the ATtiny85 near the center of the board
-2. Position the OLED display at the top of the board
-3. Arrange the three push buttons in an ergonomic layout, perhaps in a triangle or line
+### Add TP4056 Charging IC
+1. Press 'A' to open the "Add Symbol" menu
+2. Search for "TP4056" in your custom library
+3. Place the component on your schematic
 
-### Place Remaining Components
-1. Position the piezo buzzer where it won't interfere with other components
-2. Place the power switch in an accessible location
-3. Arrange the LEDs so they're visible when the device is assembled
-4. Place resistors and capacitors close to their associated components
+### Add USB Connector
+1. Press 'A' to open the "Add Symbol" menu
+2. Search for "ZX62-B-5PA_33" in your custom library
+3. Place the component on your schematic
 
-### Check Placement
-1. Use the 3D viewer (View > 3D Viewer) to check your component placement
-2. Ensure there's enough clearance between components and that the layout is logical
+### Add Push Buttons
+1. Press 'A' to add a component
+2. Search for "SW_Push" and select it
+3. Place three of these on your schematic
+
+### Add OLED Display
+1. Press 'A' to add a component
+2. Search for a suitable 4-pin connector symbol
+3. Place it on your schematic
+
+### Add Piezo Buzzer
+1. Press 'A' to add a component
+2. Search for "Speaker" or "Buzzer" and select a suitable component
+3. Place it on your schematic
+
+### Add Resistors and Capacitors
+1. Add the required resistors (1kΩ, 6.8kΩ, etc.) and capacitors (10μF)
+2. Label them according to their values
+
+### Add Battery Connector
+1. Add a suitable 2-pin connector for the battery
+
+### Add Power Switch
+1. Add a SPST switch symbol for the power switch
+
+### Add LEDs
+1. Add two LED symbols for the charging indicator LEDs
 </Steps>
 
-<Image src="/images/tiny-arcade-pcb-layout.png" alt="Tiny Arcade Game PCB Layout" width={800} height={600} />
+## Connecting Components
 
-## Routing Traces
-
-With our components placed, it's time to connect them with copper traces:
+Now that we have all our components placed, let's connect them according to our circuit design.
 
 <Steps>
-### Set Up Layers
-1. Ensure you have two copper layers: F.Cu (front) and B.Cu (back)
-2. Use the back layer (B.Cu) as a ground plane
+### Connect Power Management Circuit
+1. Connect the USB connector to the TP4056 IC
+2. Connect the TP4056 to the battery connector
+3. Add and connect the charging indicator LEDs
 
-### Start Routing
-1. Begin with power traces from the USB connector to the TP4056
-2. Route the battery connections, ensuring they can handle the necessary current
-3. Connect the ATtiny85 power and ground pins
-4. Route the OLED display connections, keeping the traces short and direct
-5. Connect the push buttons and piezo buzzer
-6. Route any remaining signal traces
+### Connect ATtiny85
+1. Connect VCC and GND
+2. Connect PB0, PB2, and PB5 to the push buttons
+3. Connect PB1 to the piezo buzzer
+4. Connect PB3 and PB4 to the OLED display connector
 
-### Use Design Rule Check (DRC)
-1. Periodically run DRC (Tools > DRC) to catch any violations
-2. Fix any issues that the DRC identifies
+### Connect Push Buttons
+1. Connect each button to its respective ATtiny85 pin
+2. Add and connect pull-up resistors as specified in the circuit theory
 
-### Optimize Routing
-1. Use the "Via Stitching" tool to add ground vias for better EMI performance
-2. Ensure all power traces have appropriate width for their current capacity
+### Connect OLED Display
+1. Connect VCC and GND
+2. Connect SCL and SDA to PB3 and PB4 of the ATtiny85
+
+### Connect Piezo Buzzer
+1. Connect one terminal to PB1 on the ATtiny85
+2. Connect the other terminal to GND
+
+### Add Power and Ground Connections
+1. Use the VCC and GND symbols to connect all components that require power
+2. Ensure the power switch is correctly placed in the circuit
 </Steps>
 
-<Callout type="warning">
-  Pay special attention to the power traces for the charging circuit. They need to be wide enough to handle the charging current safely.
-</Callout>
+<Image src="/images/tiny-arcade-schematic.png" alt="Tiny Arcade Game Schematic" width={800} height={600} />
 
-## Adding Copper Pours
-
-Adding copper pours can improve power distribution and provide shielding:
+## Annotating and Checking
 
 <Steps>
-### Create Ground Plane
-1. Select the B.Cu layer
-2. Use the "Add Filled Zones" tool to create a ground pour covering most of the board
+### Annotate Schematic
+1. Use the "Annotate Schematic Symbols" tool to automatically number your components
+2. Double-check that all components are properly labeled
 
-### Add Power Pours
-1. On the F.Cu layer, create smaller copper pours for VCC and the battery positive connection
-2. Ensure these pours are connected to the appropriate nets
-</Steps>
+### Perform Electrical Rules Check (ERC)
+1. Run the Electrical Rules Check to catch any potential issues
+2. Review and address any warnings or errors
 
-## Adding Silkscreen and Finishing Touches
-
-Let's add some final details to our PCB:
-
-<Steps>
-### Add Text
-1. Use the "Add Text" tool to label key components (e.g., buttons, power switch)
-2. Add your name or a project title to the silkscreen
-
-### Add Graphics
-1. Consider adding a simple logo or graphic to personalize your PCB
-2. Ensure any added graphics don't interfere with components or traces
-
-### Final Check
-1. Run a final DRC to catch any last-minute issues
-2. Use the 3D viewer to get a final look at your PCB design
-</Steps>
-
-## Generating Output Files
-
-Once you're happy with your PCB layout, it's time to generate the files for manufacturing:
-
-<Steps>
-### Generate Gerber Files
-1. Go to "File" > "Plot"
-2. Select all layers in the "Included Layers" section
-3. Click "Plot" to generate the Gerber files
-
-### Generate Drill Files
-1. In the Plot window, click on "Generate Drill Files"
-2. Ensure "Merge PTH and NPTH holes into one file" is checked
-3. Click "Generate Drill File"
-
-### Check Output
-1. Use a Gerber viewer (like gerbv) to check your output files
-2. Ensure all layers and drill holes are present and correct
+### Add Notes and Documentation
+1. Use text annotations to explain key parts of the circuit
+2. Fill in the title block with project details
 </Steps>
 
 ## Next Steps
 
-Congratulations! You've now completed the PCB layout for your Tiny Arcade Game. In the next section, we'll cover how to prepare these files for manufacturing and what to expect when ordering your PCBs.
+Congratulations! You've now created the schematic for your Tiny Arcade Game in KiCad. In the next section, we'll move on to creating the PCB layout based on this schematic.
 
-Are you excited to see your design come to life? Let's move on to preparing for manufacturing!
+Are you ready to turn this schematic into a real PCB design? Let's move on to the PCB Editor!
