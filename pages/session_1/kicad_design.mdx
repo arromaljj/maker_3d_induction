@@ -1,5 +1,5 @@
 ---
-title: 'Designing the Circuit in KiCad'
+title: 'Designing the USB-Powered Circuit in KiCad'
 date: '2024-09-25'
 ---
 
@@ -7,9 +7,9 @@ import { Callout } from 'nextra/components'
 import { Steps } from 'nextra/components'
 import Image from 'next/image'
 
-# Designing the Circuit in KiCad
+# Designing the USB-Powered Circuit in KiCad
 
-Now that we're familiar with KiCad and our circuit theory, let's dive into designing our Tiny Arcade Game circuit. We'll use KiCad's Schematic Editor (Eeschema) to create a schematic based on the circuit theory we've discussed.
+Now that we're familiar with KiCad and our circuit theory, let's dive into designing our USB-powered Tiny Arcade Game circuit. We'll use KiCad's Schematic Editor (Eeschema) to create a schematic based on the circuit theory we've discussed.
 
 ## Setting Up the Project
 
@@ -34,7 +34,7 @@ Before we start adding components, we need to import some custom symbols and foo
 ### Import Custom Symbols
 1. Go to "Preferences" > "Manage Symbol Libraries"
 2. Click "Add existing library"
-3. Browse for your custom .lib files (e.g., TP4056, ZX62-B-5PA_33 USB connector)
+3. Browse for your custom .lib files (e.g., USB connector symbol)
 4. Select the file and click "Open"
 5. Give the library a nickname (e.g., "TinyArcadeCustom")
 6. Click "OK" to close the dialog
@@ -49,12 +49,12 @@ Before we start adding components, we need to import some custom symbols and foo
 </Steps>
 
 <Callout type="info">
-  Ensure you have the necessary custom symbol and footprint files for components like the TP4056 and USB connector before starting your design.
+  Ensure you have the necessary custom symbol and footprint files for components like the USB connector before starting your design.
 </Callout>
 
 ## Adding Components
 
-Now, let's add the components we need for our circuit.
+Now, let's add the components we need for our USB-powered circuit.
 
 <Steps>
 ### Add ATtiny85
@@ -62,15 +62,15 @@ Now, let's add the components we need for our circuit.
 2. Search for "ATtiny85" and select it
 3. Place the component on your schematic
 
-### Add TP4056 Charging IC
-1. Press 'A' to open the "Add Symbol" menu
-2. Search for "TP4056" in your custom library
-3. Place the component on your schematic
-
 ### Add USB Connector
 1. Press 'A' to open the "Add Symbol" menu
-2. Search for "ZX62-B-5PA_33" in your custom library
+2. Search for your custom USB connector symbol (e.g., "USB_B_Micro")
 3. Place the component on your schematic
+
+### Add Voltage Regulator (if needed)
+1. Press 'A' to add a component
+2. Search for a suitable 5V to 3.3V regulator (e.g., "AMS1117-3.3")
+3. Place it on your schematic
 
 ### Add Push Buttons
 1. Press 'A' to add a component
@@ -88,28 +88,22 @@ Now, let's add the components we need for our circuit.
 3. Place it on your schematic
 
 ### Add Resistors and Capacitors
-1. Add the required resistors (1kΩ, 6.8kΩ, etc.) and capacitors (10μF)
+1. Add the required resistors (1kΩ, 6.8kΩ, etc.) and capacitors (0.1μF, 10μF)
 2. Label them according to their values
 
-### Add Battery Connector
-1. Add a suitable 2-pin connector for the battery
-
-### Add Power Switch
-1. Add a SPST switch symbol for the power switch
-
-### Add LEDs
-1. Add two LED symbols for the charging indicator LEDs
+### Add Power Symbols
+1. Add VCC and GND symbols where needed
 </Steps>
 
 ## Connecting Components
 
-Now that we have all our components placed, let's connect them according to our circuit design.
+Now that we have all our components placed, let's connect them according to our USB-powered circuit design.
 
 <Steps>
-### Connect Power Management Circuit
-1. Connect the USB connector to the TP4056 IC
-2. Connect the TP4056 to the battery connector
-3. Add and connect the charging indicator LEDs
+### Connect USB Power
+1. Connect the USB VCC to the voltage regulator input (if using one)
+2. Connect the regulated 3.3V output to the ATtiny85 VCC
+3. Connect USB GND to the circuit ground
 
 ### Connect ATtiny85
 1. Connect VCC and GND
@@ -129,12 +123,12 @@ Now that we have all our components placed, let's connect them according to our 
 1. Connect one terminal to PB1 on the ATtiny85
 2. Connect the other terminal to GND
 
-### Add Power and Ground Connections
-1. Use the VCC and GND symbols to connect all components that require power
-2. Ensure the power switch is correctly placed in the circuit
+### Add Decoupling Capacitors
+1. Place 0.1μF capacitors near the VCC pins of the ATtiny85 and OLED display
+2. Connect them between VCC and GND
 </Steps>
 
-<Image src="/images/tiny-arcade-schematic.png" alt="Tiny Arcade Game Schematic" width={800} height={600} />
+{/* <Image src="/images/tiny-arcade-usb-schematic.png" alt="USB-Powered Tiny Arcade Game Schematic" width={800} height={600} /> */}
 
 ## Annotating and Checking
 
@@ -148,12 +142,12 @@ Now that we have all our components placed, let's connect them according to our 
 2. Review and address any warnings or errors
 
 ### Add Notes and Documentation
-1. Use text annotations to explain key parts of the circuit
+1. Use text annotations to explain key parts of the circuit, especially the USB power connection
 2. Fill in the title block with project details
 </Steps>
 
 ## Next Steps
 
-Congratulations! You've now created the schematic for your Tiny Arcade Game in KiCad. In the next section, we'll move on to creating the PCB layout based on this schematic.
+Congratulations! You've now created the schematic for your USB-powered Tiny Arcade Game in KiCad. In the next section, we'll move on to creating the PCB layout based on this schematic.
 
 Are you ready to turn this schematic into a real PCB design? Let's move on to the PCB Editor!
