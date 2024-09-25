@@ -1,5 +1,6 @@
 ---
 title: 'Fundamentals of PCB Design'
+date: '2024-09-25'
 ---
 
 import { Callout } from 'nextra/components'
@@ -7,30 +8,65 @@ import { Tabs, Tab } from 'nextra/components'
 
 # Fundamentals of PCB Design
 
-Now that we understand what PCBs are and why they're important, let's dive into the fundamental principles of PCB design. These concepts will guide us as we create our Tiny Arcade Game PCB.
+Before we dive into creating our Tiny Arcade Game PCB, let's cover some fundamental concepts of PCB design. These principles will guide us as we create our schematic and layout.
+
+## Basic Electronic Components
+
+Our Tiny Arcade Game uses several key components:
+
+1. **ATtiny85 Microcontroller**: The brain of our game, processing inputs and controlling outputs.
+2. **TP4056 Charging IC**: Manages the charging of our lithium battery from USB.
+3. **USB Connector**: Provides power for charging and potentially data transfer.
+4. **Lithium Battery**: Powers our game when not connected to USB.
+5. **OLED Display**: Shows our game graphics.
+6. **Push Buttons**: For user input.
+7. **Piezo Buzzer**: Generates sound effects.
+8. **Resistors and Capacitors**: Support proper circuit operation.
+9. **LEDs**: Indicate charging status.
+
+## Power Management Fundamentals
+
+Understanding power management is crucial for our battery-powered device:
+
+### Battery Charging
+
+<Callout type="info">
+  The TP4056 IC manages the charging process for our lithium battery, ensuring safe and efficient charging from USB power.
+</Callout>
+
+Key concepts:
+- Constant Current (CC) and Constant Voltage (CV) charging phases
+- Charge termination to prevent overcharging
+- Temperature monitoring for safety
+
+### USB Power Management
+
+USB provides a 5V power source, which we use for charging. Considerations include:
+- Current limitations (typically 500mA for USB 2.0)
+- Voltage regulation for components that require 3.3V
 
 ## Design Considerations
 
-When designing a PCB, there are several key factors to consider:
+When designing a PCB, consider these key factors:
 
 1. **Functionality**: The PCB must fulfill its intended purpose effectively.
 2. **Size and Form Factor**: Consider the physical constraints of your project.
 3. **Component Placement**: Optimize for signal integrity and ease of assembly.
-4. **Layer Stack**: Determine how many layers your PCB needs.
+4. **Layer Stack**: Determine how many layers your PCB needs (we'll use two layers for our project).
 5. **Power Distribution**: Ensure proper power delivery to all components.
 6. **Signal Integrity**: Maintain clean signals, especially for high-speed designs.
 7. **Thermal Management**: Consider heat dissipation for power-hungry components.
 8. **Manufacturing Constraints**: Design with manufacturability in mind.
 
 <Callout type="info">
-  Remember: Good PCB design is a balance between electrical performance, mechanical requirements, and manufacturing constraints.
+  Good PCB design balances electrical performance, mechanical requirements, and manufacturing constraints.
 </Callout>
 
 ## Layout Best Practices
 
 Follow these best practices to create efficient and reliable PCB layouts:
 
-<Tabs items={['Component Placement', 'Routing', 'Grounding', 'Decoupling']}>
+<Tabs items={['Component Placement', 'Routing', 'Power Distribution', 'Design for Manufacturing (DFM)']}>
   <Tab>
     - Group related components together
     - Place components on one side of the board when possible
@@ -45,47 +81,32 @@ Follow these best practices to create efficient and reliable PCB layouts:
   </Tab>
   <Tab>
     - Use a solid ground plane when possible
-    - Minimize the use of vias in ground connections
-    - Keep ground returns for high-speed signals close to the signal trace
-    - Consider using star grounding for analog circuits
+    - Consider using power planes for low-impedance power distribution
+    - Place decoupling capacitors close to IC power pins
+    - Use star grounding for analog circuits if necessary
   </Tab>
   <Tab>
-    - Place decoupling capacitors close to IC power pins
-    - Use multiple capacitor values for broadband decoupling
-    - Connect decoupling capacitors to power and ground planes with short, wide traces
-    - Consider using dedicated power planes for complex designs
+    - Follow your PCB manufacturer's design rules
+    - Use standard board thicknesses and copper weights when possible
+    - Consider panelization for efficient production
+    - Add fiducial marks for automated assembly
   </Tab>
 </Tabs>
 
 ## Common PCB Design Mistakes to Avoid
 
-Being aware of common mistakes can help you create better PCB designs:
+Be aware of these common pitfalls:
 
-1. **Insufficient Clearance**: Ensure adequate spacing between components and traces to prevent short circuits and ease assembly.
-
-2. **Poor Grounding**: Improper grounding can lead to noise, interference, and unreliable operation.
-
-3. **Ignoring Thermal Considerations**: Failing to account for heat dissipation can lead to component failure or reduced lifespan.
-
-4. **Overcomplicated Routing**: Overly complex trace routing can make troubleshooting and modifications difficult.
-
-5. **Neglecting Design Rules**: Failing to follow manufacturer-specific design rules can result in production issues or increased costs.
-
-6. **Inadequate Documentation**: Poor or missing silkscreen labels can make assembly and troubleshooting challenging.
+1. **Insufficient Clearance**: Ensure adequate spacing between components and traces.
+2. **Poor Grounding**: Improper grounding can lead to noise and unreliable operation.
+3. **Ignoring Thermal Considerations**: Account for heat dissipation in your design.
+4. **Overcomplicated Routing**: Keep trace routing as simple as possible for ease of manufacturing and debugging.
+5. **Neglecting Design Rules**: Always follow manufacturer-specific design rules.
+6. **Inadequate Documentation**: Properly label components and include necessary design information.
 
 <Callout type="warning">
   Always double-check your design against design rules and best practices before sending it for fabrication. Mistakes caught early save time and money!
 </Callout>
-
-## Design for Manufacturing (DFM)
-
-Considering manufacturing constraints during the design phase can save time and reduce costs:
-
-- Follow your PCB manufacturer's design rules (trace width, spacing, hole sizes, etc.)
-- Use standard board thicknesses and copper weights when possible
-- Consider panel design for efficient production of multiple boards
-- Include fiducial marks for automated assembly
-- Add test points for easy troubleshooting and quality control
 
 ## Next Steps
 
