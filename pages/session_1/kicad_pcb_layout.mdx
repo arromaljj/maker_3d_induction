@@ -1,0 +1,146 @@
+---
+title: 'PCB Layout in KiCad'
+
+---
+
+import { Callout } from 'nextra/components'
+import { Steps } from 'nextra/components'
+import Image from 'next/image'
+
+# PCB Layout in KiCad
+
+Now that we have our schematic complete, it's time to turn it into a physical board design. We'll use KiCad's PCB Editor (Pcbnew) to create the layout for our Tiny Arcade Game PCB.
+
+## Setting Up the PCB Layout
+
+<Steps>
+### Open PCB Editor
+1. In the KiCad project manager, click on "PCB Editor" or double-click on "TinyArcadeGame.kicad_pcb"
+2. If prompted to create a new PCB file, click "Yes"
+
+### Import Netlist
+1. Go to "Tools" > "Update PCB from Schematic"
+2. In the dialog that appears, click "Update PCB"
+3. You should now see all your components on the PCB, ready to be arranged
+</Steps>
+
+## Configuring Board Setup
+
+Before we start placing components, let's configure our board settings:
+
+<Steps>
+### Set Board Size
+1. Go to "File" > "Board Setup"
+2. In the "Board Editor Options" tab, set the board size to 50mm x 50mm (or your preferred size)
+
+### Set Design Rules
+1. In the "Board Setup" window, go to the "Design Rules" tab
+2. Set the following:
+   - Clearance: 0.25mm
+   - Track Width: 0.25mm
+   - Via Size: 0.8mm
+   - Via Drill: 0.4mm
+3. Click "OK" to apply the settings
+</Steps>
+
+<Callout type="info">
+  These settings are suitable for many PCB manufacturers. Always check your manufacturer's capabilities and adjust if necessary.
+</Callout>
+
+## Placing Components
+
+Now let's arrange our components on the board:
+
+<Steps>
+### Arrange Major Components
+1. Start with the larger components: ATtiny85, OLED display, and battery holder
+2. Place the ATtiny85 near the center of the board
+3. Position the OLED display at the top of the board
+4. Place the battery holder at the bottom of the board
+
+### Place Buttons
+1. Arrange the three push buttons in an ergonomic layout, perhaps in a triangle or line
+2. Ensure there's enough space around each button for comfortable use
+
+### Place Remaining Components
+1. Position the piezo buzzer where it won't interfere with other components
+2. Place the resistors and any other small components in convenient locations
+
+### Check Placement
+1. Use the 3D viewer (View > 3D Viewer) to check your component placement
+2. Ensure there's enough clearance between components and that the layout is logical
+</Steps>
+
+<Image src="/images/tiny-arcade-pcb-layout.png" alt="Tiny Arcade Game PCB Layout" width={800} height={600} />
+
+## Routing Traces
+
+With our components placed, it's time to connect them with copper traces:
+
+<Steps>
+### Set Up Layers
+1. Ensure you have two copper layers: F.Cu (front) and B.Cu (back)
+2. Add internal planes for VCC and GND if desired
+
+### Start Routing
+1. Use the "Route Tracks" tool (or press 'X') to start routing
+2. Begin with power and ground connections
+3. Route signals, prioritizing shorter, more direct paths
+4. Use vias to change layers when necessary
+
+### Use Design Rule Check (DRC)
+1. Periodically run DRC (Tools > DRC) to catch any violations
+2. Fix any issues that the DRC identifies
+
+### Optimize Routing
+1. Use the "Via Stitching" tool to add ground vias for better EMI performance
+2. Ensure all traces have appropriate width for their current capacity
+</Steps>
+
+<Callout type="warning">
+  Always maintain proper clearance between traces, especially those carrying different signals or voltages.
+</Callout>
+
+## Adding Silkscreen and Finishing Touches
+
+Let's add some final details to our PCB:
+
+<Steps>
+### Add Text
+1. Use the "Add Text" tool to label key components (e.g., buttons, power)
+2. Add your name or a project title to the silkscreen
+
+### Add Graphics
+1. Consider adding a simple logo or graphic to personalize your PCB
+2. Ensure any added graphics don't interfere with components or traces
+
+### Final Check
+1. Run a final DRC to catch any last-minute issues
+2. Use the 3D viewer to get a final look at your PCB design
+</Steps>
+
+## Generating Output Files
+
+Once you're happy with your PCB layout, it's time to generate the files for manufacturing:
+
+<Steps>
+### Generate Gerber Files
+1. Go to "File" > "Plot"
+2. Select all layers in the "Included Layers" section
+3. Click "Plot" to generate the Gerber files
+
+### Generate Drill Files
+1. In the Plot window, click on "Generate Drill Files"
+2. Ensure "Merge PTH and NPTH holes into one file" is checked
+3. Click "Generate Drill File"
+
+### Check Output
+1. Use a Gerber viewer (like gerbv) to check your output files
+2. Ensure all layers and drill holes are present and correct
+</Steps>
+
+## Next Steps
+
+Congratulations! You've now completed the PCB layout for your Tiny Arcade Game. In the next section, we'll cover how to prepare these files for manufacturing and what to expect when ordering your PCBs.
+
+Are you excited to see your design come to life? Let's move on to preparing for manufacturing!

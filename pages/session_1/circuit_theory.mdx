@@ -1,0 +1,117 @@
+---
+title: 'Circuit Theory for Tiny Arcade Game'
+
+---
+
+import { Callout } from 'nextra/components'
+import { Steps } from 'nextra/components'
+import Image from 'next/image'
+
+# Circuit Theory for Tiny Arcade Game
+
+Understanding the theory behind our Tiny Arcade Game circuit is crucial for successful implementation and troubleshooting. In this section, we'll break down the circuit into its core components and explain how they work together.
+
+## Circuit Overview
+
+Our Tiny Arcade Game circuit consists of several key elements:
+
+1. Power supply (CR2032 battery)
+2. ATtiny85 microcontroller
+3. OLED display
+4. Push buttons
+5. Piezo buzzer
+6. Supporting components (resistors, capacitors)
+
+Let's examine each part of the circuit in detail.
+
+## Power Supply
+
+<Image src="/images/power-supply-circuit.svg" alt="Power Supply Circuit" width={600} height={400} />
+
+The power for our circuit comes from a 3V CR2032 battery. Here's how it's set up:
+
+<Steps>
+### Battery Connection
+The positive terminal of the battery connects to the VCC of the ATtiny85 and other components.
+
+### Power Switch
+A SPST (Single Pole, Single Throw) switch is used to turn the device on and off.
+
+### Decoupling Capacitor
+A 0.1µF capacitor is placed close to the VCC pin of the ATtiny85 to reduce noise in the power supply.
+</Steps>
+
+<Callout type="info">
+  The CR2032 battery provides 3V, which is within the operating voltage range of the ATtiny85 (2.7V to 5.5V) and the OLED display.
+</Callout>
+
+## ATtiny85 Microcontroller
+
+<Image src="/images/attiny85-circuit.svg" alt="ATtiny85 Circuit" width={600} height={400} />
+
+The ATtiny85 is the brain of our Tiny Arcade Game. Here's how it's connected:
+
+1. **VCC (Pin 8)**: Connected to the positive supply voltage (3V from the battery).
+2. **GND (Pin 4)**: Connected to the circuit ground.
+3. **PB0 (Pin 5)**: Connected to one of the push buttons.
+4. **PB1 (Pin 6)**: Connected to another push button.
+5. **PB2 (Pin 7)**: Connected to the third push button.
+6. **PB3 (Pin 2)**: Connected to the piezo buzzer.
+7. **PB4 (Pin 3)**: Connected to the SDA line of the OLED display.
+8. **PB5 (Pin 1)**: Connected to the SCL line of the OLED display.
+
+<Callout type="warning">
+  Ensure that you don't exceed the maximum current rating for each I/O pin (40mA) or the entire chip (200mA).
+</Callout>
+
+## OLED Display
+
+<Image src="/images/oled-circuit.svg" alt="OLED Display Circuit" width={600} height={400} />
+
+We're using an SSD1306 OLED display with an I2C interface. Here's how it's connected:
+
+1. **VCC**: Connected to the 3V supply.
+2. **GND**: Connected to the circuit ground.
+3. **SCL**: Connected to PB5 (SCK) of the ATtiny85.
+4. **SDA**: Connected to PB4 (MISO) of the ATtiny85.
+
+The I2C protocol allows us to control the display using just two pins, saving valuable I/O on our microcontroller.
+
+## Push Buttons
+
+<Image src="/images/buttons-circuit.svg" alt="Push Buttons Circuit" width={600} height={400} />
+
+We have three push buttons for user input:
+
+1. Each button is connected between a pin on the ATtiny85 (PB0, PB1, PB2) and ground.
+2. A 10K pull-up resistor is connected between each button pin and VCC.
+
+When a button is pressed, it pulls the corresponding pin to ground. The microcontroller can detect this change in state.
+
+## Piezo Buzzer
+
+<Image src="/images/buzzer-circuit.svg" alt="Piezo Buzzer Circuit" width={600} height={400} />
+
+The piezo buzzer is used for sound effects:
+
+1. One terminal is connected to PB3 of the ATtiny85.
+2. The other terminal is connected to ground.
+
+By rapidly switching the voltage on PB3, we can create different tones and sound effects.
+
+## Component Interactions
+
+Understanding how these components interact is key to grasping the overall circuit operation:
+
+1. The ATtiny85 runs the game logic and controls all other components.
+2. It sends data to the OLED display via I2C to update the game visuals.
+3. It constantly checks the state of the push buttons to respond to user input.
+4. Based on game events, it generates sounds by controlling the piezo buzzer.
+
+All of this is powered by the CR2032 battery, with the power switch controlling when the circuit is active.
+
+## Next Steps
+
+Now that we understand the theory behind our circuit, we're ready to start implementing it in KiCad. In the next section, we'll begin by creating the schematic based on this circuit design.
+
+Are you ready to bring this circuit to life in our schematic? Let's get started with KiCad!

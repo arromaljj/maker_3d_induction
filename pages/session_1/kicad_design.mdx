@@ -1,0 +1,137 @@
+---
+title: 'Designing the Circuit in KiCad'
+---
+
+import { Callout } from 'nextra/components'
+import { Steps } from 'nextra/components'
+import Image from 'next/image'
+
+# Designing the Circuit in KiCad
+
+Now that we're familiar with KiCad, let's dive into designing our Tiny Arcade Game circuit. We'll use KiCad's Schematic Editor (Eeschema) to create a schematic based on the circuit theory we've discussed.
+
+## Setting Up the Project
+
+<Steps>
+### Open KiCad
+Launch KiCad from your applications menu or desktop shortcut.
+
+### Create a New Project
+1. Click on "File" > "New" > "Project"
+2. Choose a location for your project and name it "TinyArcadeGame"
+3. Click "Create"
+
+### Open Schematic Editor
+In the KiCad project manager, double-click on "TinyArcadeGame.kicad_sch" to open the Schematic Editor.
+</Steps>
+
+## Adding Components
+
+Now, let's add the components we need for our circuit. We'll use KiCad's built-in libraries to find most of our components.
+
+<Steps>
+### Add ATtiny85
+1. Click the "Place symbol" button or press 'A' on your keyboard
+2. In the Choose Symbol window, type "ATtiny85" in the search bar
+3. Select "ATtiny85-20PU" from the list and click OK
+4. Place the component on your schematic
+
+### Add OLED Display
+1. Press 'A' to add another component
+2. Search for "OLED" and select a suitable 128x64 OLED display component
+3. If you can't find a suitable component, we'll create a custom one later
+4. Place the component on your schematic
+
+### Add Push Buttons
+1. Press 'A' to add a component
+2. Search for "SW_Push" and select it
+3. Place three of these on your schematic
+
+### Add Battery Holder
+1. Press 'A' to add a component
+2. Search for "Battery_Cell" and select it
+3. Place it on your schematic
+
+### Add Piezo Buzzer
+1. Press 'A' to add a component
+2. Search for "Speaker" or "Buzzer" and select a suitable component
+3. Place it on your schematic
+
+### Add Resistors
+1. Press 'A' to add a component
+2. Search for "R" and select the basic resistor symbol
+3. Place four resistors on your schematic
+
+### Add Power and Ground Symbols
+1. Use the "Place power port" button or press 'P' to add VCC and GND symbols where needed
+</Steps>
+
+<Callout type="info">
+  Remember to label your components (e.g., R1, R2, SW1, SW2, etc.) to keep your schematic organized. You can do this by right-clicking on a component and selecting "Properties".
+</Callout>
+
+## Connecting Components
+
+Now that we have all our components placed, let's connect them according to our circuit design.
+
+<Steps>
+### Connect ATtiny85
+1. Connect VCC (pin 8) to the positive terminal of the battery
+2. Connect GND (pin 4) to the GND symbol
+3. Connect PB0, PB1, and PB2 (pins 5, 6, and 7) to the push buttons
+4. Connect PB3 (pin 2) to the piezo buzzer
+5. Connect PB4 and PB5 (pins 3 and 1) to the OLED display's SDA and SCL lines
+
+### Connect OLED Display
+1. Connect VCC and GND to the appropriate power symbols
+2. Connect SDA and SCL to the ATtiny85 as mentioned above
+
+### Connect Push Buttons
+1. Connect one side of each button to the appropriate ATtiny85 pin
+2. Connect the other side to GND
+3. Connect a 10K resistor between each button and VCC (pull-up resistors)
+
+### Connect Piezo Buzzer
+1. Connect one terminal to PB3 on the ATtiny85
+2. Connect the other terminal to GND
+
+### Connect Battery
+1. Connect the positive terminal to VCC
+2. Connect the negative terminal to GND
+</Steps>
+
+<Image src="/images/tiny-arcade-schematic.png" alt="Tiny Arcade Game Schematic" width={800} height={600} />
+
+## Adding Custom Components (if necessary)
+
+If you couldn't find a suitable OLED display component, here's how to create a custom one:
+
+<Steps>
+### Open Symbol Editor
+1. In the Schematic Editor, go to "Tools" > "Symbol Editor"
+
+### Create New Symbol
+1. Click "Create new symbol" or press 'N'
+2. Name it "OLED_128x64" and save it in your project's library
+
+### Add Pins
+1. Use the "Add pins" tool to create pins for VCC, GND, SDA, and SCL
+2. Label each pin appropriately
+
+### Save and Use
+1. Save your new symbol
+2. You can now use this custom symbol in your schematic
+</Steps>
+
+## Performing Electrical Rules Check (ERC)
+
+Before we conclude, let's run an Electrical Rules Check to catch any potential issues:
+
+1. Click on the "Perform electrical rules check" button (looks like a bug)
+2. Review any warnings or errors and correct them in your schematic
+
+## Next Steps
+
+Congratulations! You've now created the schematic for your Tiny Arcade Game in KiCad. In the next section, we'll move on to creating the PCB layout based on this schematic.
+
+Are you ready to turn this schematic into a real PCB design? Let's move on to the PCB Editor!

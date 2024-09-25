@@ -1,9 +1,4 @@
 {
-  "index": "Introduction",
-  "design_2": "Designing Your Keychain",
-  "design_3": "Preparing for 3D Printing",
-  "printing_4": "3D Printing Your Keychain",
-  "postprint_5": "Post-Processing and Finishing",
-  "troubleshoot_6": "Troubleshooting and Tips",
-  "nextsteps_7": "Next Steps"
+    "index": "Introduction to the series",
+    "session_1": "Session 1"
 }

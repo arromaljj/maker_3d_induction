@@ -1,0 +1,138 @@
+---
+title: 'Design Rule Check (DRC) in KiCad'
+---
+
+import { Callout } from 'nextra/components'
+import { Steps } from 'nextra/components'
+import Image from 'next/image'
+
+# Design Rule Check (DRC) in KiCad
+
+After completing your PCB layout, it's crucial to perform a Design Rule Check (DRC). This process helps ensure that your design meets manufacturability standards and will function as intended. Let's walk through the DRC process for our Tiny Arcade Game PCB.
+
+## What is a Design Rule Check?
+
+A Design Rule Check is an automated process that verifies your PCB design against a set of predefined rules. These rules typically cover:
+
+- Minimum trace width and spacing
+- Clearance between different elements (traces, pads, vias, etc.)
+- Hole sizes and clearances
+- Silkscreen overlap
+- Board edge clearances
+
+Running a DRC helps catch potential issues before sending your design for manufacturing, saving time and money.
+
+## Setting Up Design Rules
+
+Before running a DRC, let's ensure our design rules are set correctly:
+
+<Steps>
+### Open Board Setup
+1. In the PCB Editor, go to "File" > "Board Setup"
+
+### Configure Design Rules
+1. Navigate to the "Design Rules" tab
+2. Set the following (adjust based on your manufacturer's capabilities):
+   - Clearance: 0.2mm (8 mil)
+   - Track Width: 0.25mm (10 mil)
+   - Via Diameter: 0.6mm (24 mil)
+   - Via Drill: 0.3mm (12 mil)
+   - uVia Diameter: 0.3mm (12 mil)
+   - uVia Drill: 0.1mm (4 mil)
+3. Click "OK" to apply the settings
+</Steps>
+
+<Callout type="info">
+  These settings are general guidelines. Always check your PCB manufacturer's design rules and adjust accordingly.
+</Callout>
+
+## Running the Design Rule Check
+
+Now that our rules are set, let's run the DRC:
+
+<Steps>
+### Open DRC Tool
+1. Click on the DRC icon in the top toolbar (it looks like a ladybug), or
+2. Go to "Inspect" > "Design Rules Checker"
+
+### Configure DRC Settings
+1. In the DRC window, ensure all checkboxes are ticked
+2. Pay special attention to:
+   - Minimum clearance
+   - Minimum track width
+   - Minimum via diameter
+   - Minimum via drill
+
+### Run DRC
+1. Click "Run DRC" at the bottom of the window
+2. Wait for the check to complete (this may take a few moments)
+</Steps>
+
+## Interpreting DRC Results
+
+After running the DRC, you'll see a results window:
+
+<Image src="/images/drc-results-window.png" alt="DRC Results Window" width={600} height={400} />
+
+### Understanding the Results
+
+- **Errors**: These are serious issues that must be fixed before manufacturing.
+- **Warnings**: These are potential issues that should be reviewed but may not prevent manufacturing.
+
+### Common DRC Errors and How to Fix Them
+
+1. **Clearance Violation**
+   - Error: Two copper elements are too close to each other.
+   - Fix: Adjust the placement of components or reroute traces to increase clearance.
+
+2. **Track Width Violation**
+   - Error: A trace is narrower than the minimum width.
+   - Fix: Increase the width of the offending trace.
+
+3. **Hole Size Violation**
+   - Error: A hole (via or pad) is too small or too large.
+   - Fix: Adjust the hole size in the footprint or via properties.
+
+4. **Silkscreen Overlap**
+   - Warning: Silkscreen is overlapping with pads or holes.
+   - Fix: Move or resize silkscreen text/graphics to avoid overlap.
+
+5. **Edge Clearance Violation**
+   - Error: Copper is too close to the board edge.
+   - Fix: Move components or traces away from the board edge.
+
+<Callout type="warning">
+  Don't ignore DRC errors! Each error represents a potential manufacturing or functional issue in your PCB.
+</Callout>
+
+## Fixing DRC Errors
+
+To fix DRC errors:
+
+<Steps>
+### Locate the Error
+1. Double-click on an error in the DRC window
+2. KiCad will zoom to the location of the error on your PCB
+
+### Understand the Error
+1. Read the error description carefully
+2. Identify which design rule is being violated
+
+### Make Corrections
+1. Adjust component placement, trace routing, or other elements as needed
+2. Use the measuring tool to verify clearances after making changes
+
+### Re-run DRC
+1. After fixing all errors, run the DRC again
+2. Repeat the process until no errors remain
+</Steps>
+
+## Final Thoughts
+
+Running and addressing DRC errors is a critical step in the PCB design process. It helps ensure that your Tiny Arcade Game PCB will be manufacturable and function as intended. Remember, it's normal to go through several iterations of running DRC and making corrections.
+
+## Next Steps
+
+Once you've cleared all DRC errors and reviewed any warnings, you're ready to prepare your PCB design for manufacturing. In the next section, we'll cover how to generate the necessary files and what to consider when choosing a PCB manufacturer.
+
+Are you confident in your error-free PCB design? Let's move on to preparing for manufacturing!

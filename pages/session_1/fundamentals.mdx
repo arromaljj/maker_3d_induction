@@ -1,0 +1,94 @@
+---
+title: 'Fundamentals of PCB Design'
+---
+
+import { Callout } from 'nextra/components'
+import { Tabs, Tab } from 'nextra/components'
+
+# Fundamentals of PCB Design
+
+Now that we understand what PCBs are and why they're important, let's dive into the fundamental principles of PCB design. These concepts will guide us as we create our Tiny Arcade Game PCB.
+
+## Design Considerations
+
+When designing a PCB, there are several key factors to consider:
+
+1. **Functionality**: The PCB must fulfill its intended purpose effectively.
+2. **Size and Form Factor**: Consider the physical constraints of your project.
+3. **Component Placement**: Optimize for signal integrity and ease of assembly.
+4. **Layer Stack**: Determine how many layers your PCB needs.
+5. **Power Distribution**: Ensure proper power delivery to all components.
+6. **Signal Integrity**: Maintain clean signals, especially for high-speed designs.
+7. **Thermal Management**: Consider heat dissipation for power-hungry components.
+8. **Manufacturing Constraints**: Design with manufacturability in mind.
+
+<Callout type="info">
+  Remember: Good PCB design is a balance between electrical performance, mechanical requirements, and manufacturing constraints.
+</Callout>
+
+## Layout Best Practices
+
+Follow these best practices to create efficient and reliable PCB layouts:
+
+<Tabs items={['Component Placement', 'Routing', 'Grounding', 'Decoupling']}>
+  <Tab>
+    - Group related components together
+    - Place components on one side of the board when possible
+    - Consider the physical size and height of components
+    - Leave space for test points and mounting holes
+  </Tab>
+  <Tab>
+    - Use appropriate trace widths for current capacity
+    - Maintain minimum clearances between traces
+    - Avoid 90-degree angles in traces (use 45-degree or curved traces)
+    - Keep sensitive signal traces short and direct
+  </Tab>
+  <Tab>
+    - Use a solid ground plane when possible
+    - Minimize the use of vias in ground connections
+    - Keep ground returns for high-speed signals close to the signal trace
+    - Consider using star grounding for analog circuits
+  </Tab>
+  <Tab>
+    - Place decoupling capacitors close to IC power pins
+    - Use multiple capacitor values for broadband decoupling
+    - Connect decoupling capacitors to power and ground planes with short, wide traces
+    - Consider using dedicated power planes for complex designs
+  </Tab>
+</Tabs>
+
+## Common PCB Design Mistakes to Avoid
+
+Being aware of common mistakes can help you create better PCB designs:
+
+1. **Insufficient Clearance**: Ensure adequate spacing between components and traces to prevent short circuits and ease assembly.
+
+2. **Poor Grounding**: Improper grounding can lead to noise, interference, and unreliable operation.
+
+3. **Ignoring Thermal Considerations**: Failing to account for heat dissipation can lead to component failure or reduced lifespan.
+
+4. **Overcomplicated Routing**: Overly complex trace routing can make troubleshooting and modifications difficult.
+
+5. **Neglecting Design Rules**: Failing to follow manufacturer-specific design rules can result in production issues or increased costs.
+
+6. **Inadequate Documentation**: Poor or missing silkscreen labels can make assembly and troubleshooting challenging.
+
+<Callout type="warning">
+  Always double-check your design against design rules and best practices before sending it for fabrication. Mistakes caught early save time and money!
+</Callout>
+
+## Design for Manufacturing (DFM)
+
+Considering manufacturing constraints during the design phase can save time and reduce costs:
+
+- Follow your PCB manufacturer's design rules (trace width, spacing, hole sizes, etc.)
+- Use standard board thicknesses and copper weights when possible
+- Consider panel design for efficient production of multiple boards
+- Include fiducial marks for automated assembly
+- Add test points for easy troubleshooting and quality control
+
+## Next Steps
+
+With these fundamentals in mind, we're ready to start applying these principles to our Tiny Arcade Game PCB design. In the next section, we'll look at the specific requirements of our project and begin creating our schematic in KiCad.
+
+Are you feeling confident about these PCB design principles? Let's put them into practice!
