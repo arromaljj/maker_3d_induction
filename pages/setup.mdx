@@ -1,0 +1,69 @@
+---
+title: 'Arduino Setup'
+date: '2024-09-25'
+---
+
+import { Callout, Steps } from 'nextra-theme-docs'
+
+# ATtiny85 Game Setup
+
+This page will guide you through the process of setting up your development environment and preparing the hardware for ATtiny85 game programming.
+
+<Steps>
+
+### Install Arduino IDE
+
+1. Download and install the latest version of the Arduino IDE from the [official website](https://www.arduino.cc/en/software).
+
+### Prepare Arduino as ISP
+
+1. Open Arduino IDE
+2. Go to File > Examples > ArduinoISP > ArduinoISP
+3. Connect your Arduino UNO to your computer
+4. Upload the ArduinoISP sketch to your Arduino UNO
+
+### Set up ATtiny85 Board Support
+
+1. In Arduino IDE, go to File > Preferences
+2. In the "Additional Board Manager URLs" field, add:
+   ```
+   https://raw.githubusercontent.com/damellis/attiny/ide-1.6.x-boards-manager/package_damellis_attiny_index.json
+   ```
+3. Click "OK" to save
+4. Go to Tools > Board > Boards Manager
+5. Search for "attiny" and install the "ATtiny" package by David A. Mellis
+
+### Configure Board Settings
+
+1. Go to Tools > Board and select "ATtiny25/45/85"
+2. Set Tools > Processor to "ATtiny85"
+3. Set Tools > Clock to "Internal 8 MHz"
+
+### Connect ATtiny85 to Arduino
+
+Use the following connection table:
+
+| Arduino Pin | ATtiny85 Pin | ATtiny85 Function |
+|-------------|--------------|-------------------|
+| 5V          | 8            | Vcc               |
+| GND         | 4            | GND               |
+| 10          | 1            | RESET             |
+| 11          | 5            | MOSI (PB0)        |
+| 12          | 6            | MISO (PB1)        |
+| 13          | 7            | SCK (PB2)         |
+
+<Callout type="info">
+  Additional Connection: Connect a 10 µF capacitor between ATtiny85's RESET (Pin 1) and GND, with the positive lead on RESET.
+</Callout>
+
+### Burn the Bootloader
+
+1. In Arduino IDE, set Tools > Programmer to "Arduino as ISP"
+2. Click on Tools > Burn Bootloader
+
+</Steps>
+
+<Callout type="success">
+  Now that your setup is complete, you're ready to move on to programming the ATtiny85 with your game code!
+</Callout>
+

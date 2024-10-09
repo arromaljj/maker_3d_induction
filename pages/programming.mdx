@@ -1,0 +1,64 @@
+---
+title: 'Programming Setup'
+date: '2024-09-25'
+---
+
+import { Callout, Steps } from 'nextra-theme-docs'
+
+# Programming and Assembling Your ATtiny85 Game
+
+This page will guide you through the process of uploading the game code to your ATtiny85 and assembling the final project.
+
+<Steps>
+
+### Prepare the Game Code
+
+1. Download the ATtiny Games ZIP file: [ATtiny_Games.zip](/files/ATtiny_Games.zip)
+2. Extract the ZIP file on your computer
+3. Open the Arduino IDE
+4. Navigate to File > Open and select the .ino file of the game you want to play from the extracted folder
+
+### Upload the Game to ATtiny85
+
+1. Ensure your ATtiny85 is still connected to the Arduino as described in the setup page
+2. In Arduino IDE, click on Sketch > Upload Using Programmer
+
+### Connect ATtiny85 to OLED Display
+
+Use the following connection table:
+
+| Display Pin | ATtiny85 Pin | ATtiny85 Function |
+|-------------|--------------|-------------------|
+| SDA         | 2            | SDA (PB3)         |
+| SCL         | 3            | SCL (PB4)         |
+| GND         | 4            | GND               |
+| Vcc         | 8            | Vcc               |
+
+### Connect Buttons
+
+<Callout type="warning">
+  For the specific wiring configuration for the buttons, please consult a Maker Society volunteer. They will provide you with the correct setup for your particular game.
+</Callout>
+
+### Power Up and Play!
+
+1. Power up your ATtiny85 setup
+2. The game should start on the OLED display
+3. Use the buttons to control the game
+
+</Steps>
+
+## Troubleshooting
+
+If you encounter any issues:
+
+- Double-check all connections
+- Ensure proper power and ground connections
+- Verify correct board, processor, clock, and programmer settings in Arduino IDE
+- If ATtiny85 isn't recognized, try pressing the reset button on Arduino just before uploading
+- For display issues, check I2C connections and ensure necessary libraries are installed
+
+<Callout type="success">
+  Congratulations! You've now set up, programmed, and assembled your very own ATtiny85-powered game. Enjoy playing and feel free to experiment with modifying the game code or trying out different games from the repository.
+</Callout>
+

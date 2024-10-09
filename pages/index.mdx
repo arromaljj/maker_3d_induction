@@ -1,84 +1,50 @@
 ---
-title: 'Build Your Own Tiny Arcade Game: A 3-Session Adventure'
+title: 'Introduction'
+date: '2024-09-25'
 ---
 
-import { Callout } from 'nextra/components'
-import Image from 'next/image'
+import { Callout } from 'nextra-theme-docs'
 
-# Build Your Own Tiny Arcade Game: A 3-Session Adventure
+# Introduction to ATtiny85 Game Programming
 
-Welcome, makers and gaming enthusiasts! Get ready to embark on an exciting journey where we'll combine the nostalgia of classic arcade games with the power of modern DIY electronics. Over the course of three action-packed sessions, you'll design, build, and program your very own Tiny Arcade Game from scratch!
+Welcome to the ATtiny85 Game Programming tutorial! This guide will walk you through the process of setting up and programming an ATtiny85 microcontroller to play games using an Arduino board as an In-System Programmer (ISP).
 
-<Image src="/media/arcade_game_final.jpg" alt="Tiny Arcade Game Preview" width={600} height={400} />
+## What You'll Learn
 
-## What You'll Create
+- How to set up the Arduino IDE for ATtiny85 development
+- Programming an Arduino as an ISP (In-System Programmer)
+- Uploading game code to an ATtiny85
+- Connecting an OLED display and buttons to play the game
 
-Imagine holding a fully functional arcade game in the palm of your hand. That's exactly what you'll achieve by the end of this series! Your Tiny Arcade Game will feature:
+## Materials Needed
 
-- A compact, custom-designed PCB
-- An ATtiny85 microcontroller as the brain
-- A vibrant OLED display for crisp graphics
-- Intuitive button controls for gameplay
-- A piezo buzzer for those classic game sounds
-- Powered by a single CR2032 battery for portability
-
-But more than just a cool gadget, this project is your gateway to the world of PCB design, electronics assembly, and embedded programming!
-
-## Our 3-Session Journey
-
-### Session 1: PCB Design Magic (September 25th)
-- Dive into the fundamentals of PCB design
-- Unravel the circuit theory behind our game
-- Get hands-on with KiCad, a professional PCB design tool
-- Design the heart of your arcade game - the custom PCB
-- Learn about Design Rule Checking to ensure manufacturability
-
-**Outcome:** By the end of this session, you'll have designed a professional-quality PCB ready for manufacturing!
-
-### Session 2: From Virtual to Reality (October 2nd)
-- Witness your PCB design come to life as physical boards
-- Master the art of soldering components
-- Assemble your Tiny Arcade Game PCB
-- Learn about component identification and placement
-- Troubleshoot common assembly issues
-
-**Outcome:** You'll hold in your hands a fully assembled Tiny Arcade Game PCB!
-
-### Session 3: Bringing Your Game to Life (October 9th)
-- Set up the Arduino IDE for ATtiny85 programming
-- Write your first game code - let's start with a simple "Pong" clone
-- Learn about graphics programming on a small OLED display
-- Implement game logic, controls, and sound effects
-- Explore ways to expand and customize your game
-
-**Outcome:** Play your very own, self-made Tiny Arcade Game!
+Before we begin, make sure you have the following components:
 
 <Callout type="info">
-  Throughout this series, you'll gain hands-on experience with PCB design, electronics assembly, soldering, embedded programming, and game development - a comprehensive maker skillset!
+  Gather all these materials before starting the project to ensure a smooth experience.
 </Callout>
 
-## What You'll Need
+- Arduino UNO board
+- ATtiny85 microcontroller
+- SSD1306 OLED display (128x64 pixels)
+- 2 push buttons
+- Breadboard and jumper wires
+- 10 µF capacitor
+- USB cable for Arduino
 
-Don't worry about gathering materials just yet. We'll provide a detailed list before each session. All you need to bring is your curiosity and enthusiasm!
+## Project Overview
 
-## Who Is This For?
+This project involves three main stages:
 
-This series is perfect for:
-- Hobbyists interested in electronics and gaming
-- Students looking to apply their programming skills to hardware
-- Makers who want to level up their PCB design abilities
-- Anyone who's dreamed of creating their own handheld game
+1. **Setup**: Preparing your development environment and hardware.
+2. **Programming**: Uploading the game code to the ATtiny85.
+3. **Assembly**: Connecting the programmed ATtiny85 to the display and buttons.
 
-No prior experience in PCB design or game programming is required. We'll guide you through every step of the process!
-
-## Get Ready for an Exciting Adventure!
-
-By the end of these three sessions, you'll have transformed a simple idea into a fully functional, handheld arcade game. You'll gain skills in PCB design, electronics assembly, and embedded programming that you can apply to countless future projects.
-
-Are you ready to start this exciting journey into the world of custom electronics and game design? Let's dive in and create something amazing together!
+In the following pages, we'll go through each of these stages in detail. By the end of this tutorial, you'll have a fully functional game running on your ATtiny85!
 
 <Callout type="warning">
-  Space is limited, so make sure to reserve your spot for all three sessions. You won't want to miss a single step of this incredible maker adventure!
+  Remember to handle electronic components with care and follow proper safety precautions throughout the project.
 </Callout>
 
-See you in our first session, where we'll start by designing the brain of our Tiny Arcade Game. Get ready to unleash your creativity and bring your game ideas to life!
+Let's get started with the setup process in the next section.
+
